@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<!-- <p>Test</p> -->
+	<form name="myForm"> <!-- onsubmit="return validateForm()" method="post"-->
+	<h2>Ohms Law</h2>
+
+	<!-- Calcaulation to Pick -->
+	<h3>Calculation Value to Choose</h3>
+    	<input type="radio" id="Value" name="calcValue" value="voltage">
+  	<label for="Voltage">Voltage</label><br>
+  	<input type="radio" id="Value" name="calcValue" value="current">
+  	<label for="Current">Current</label><br>
+  	<input type="radio" id="Value" name="calcValue" value="resistance">
+  	<label for="Resistance">Resistance</label><br>	
+  	
+  	<!-- Input Values -->
+  	<h3>Values to Enter</h3>
+  	Voltage (V): <input type="text" id="voltageValue"><br><br>
+  	Current (I): <input type="text" id="currentValue"><br><br>
+  	Resistance (R): <input type="text" id="resistanceValue"><br><br>
+  	<input type="button" value="Calculate" onclick="validateForm()"> <!-- "; return false;"--> 	
+	<!-- <button onclick="validateForm()">Calculate</button> -->
+	</form>	
+	<br>
+	<div id="resultValue"></div>
+
+
+<script>
+function validateForm() {
+
+  //alert("Test 1");		
+  //Get values from the HTML forms
+  var V = document.getElementById("voltageValue").value;
+  V = parseFloat(V);
+  //alert(V);
+  var I = document.getElementById("currentValue").value;
+  I = parseFloat(I);
+  //alert(I);
+  var R = document.getElementById("resistanceValue").value;
+  R = parseFloat(R);
+  //alert(R);
+  var calcValue = document.getElementById("Value").value;
+  //alert("Where is CalcValue?");
+  alert(calcValue);
+  //Define Variables
+  var results;
+  
+  //calcValue = "voltage";
+  calcValue = "current";
+  //calcValue = "resistance";
+  
+  switch(calcValue){
+  	case "voltage":
+  		alert("Voltage selected.");
+  		//V = IR
+  		results = I * R;
+  		results = "Voltage is: " + results + " Volts.";
+  		break;
+  		
+  	case "current":
+  		alert("Current Selected.");
+  		//I = V/R
+  		results = V / R;
+  		results = "Current is: " + results + " Amps.";
+  		break;
+  		
+  	case "resistance":
+  		alert("Resistance Selected.");
+  		//R = V/I
+  		results = V / I;
+  		results = "Resistance is: " + results + " Ohms.";
+  		break;
+  		
+  	default:
+  		//alert("Something is wrong.");
+  		results = "Something is wrong.";
+  }
+  //alert("Pause!");
+  document.getElementById("resultValue").innerHTML = results;
+}
+
+
+</script>
+</body>
+</html>
